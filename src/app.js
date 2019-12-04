@@ -1,5 +1,5 @@
-const express = require('express');
-const routes = require('./routes');
+import express from 'express';
+import routes from './routes';
 // importando routes.js
 
 /**
@@ -27,5 +27,5 @@ class App {
   }
 }
 
-module.exports = new App().server;
+export default new App().server;
 // estou instanciando minha aplicação "App" com o server que pode ser acessada da minha classe
