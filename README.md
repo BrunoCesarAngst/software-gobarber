@@ -50,6 +50,34 @@ Conseito de padronização de código
 `touch routes.js`
 
 Docker
+
+Nome do container: database
+
+Senha do banco de dados: docker
+
+Quando for acessado localhost: 5432 da minha máquina, estaremos acessando a porta 5432 desse container
+
+usando a imagem do Postgres 11
+```docker
+docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres:11
+```
+Para visualizar os dados do Postgres eu uso o [Postbird](https://electronjs.org/apps/postbird)
+
+No Postbird informo:
+
+usuario: postgres
+
+senha: docker
+
+Clico em test connection se deu tudo certo clico em save & connect, clique em create database e dê um nome, nesse caso gobarber!
+
+``` docker
+docker start database - para reiniciar o container
+docker logs database - para observar algum possível erro
+```
+
+
+
 ORM
 MVC
 Altenticação JWT
