@@ -151,8 +151,28 @@ touch .prettierrc.json
 ```bash
 yarn eslint --fix src --ext .js
 ```
+Configurando o Sequelize(ORM) e estrutura de pastas
+ORM (do inglês: Object-relational mapping) - Mapeamento objeto-relacional é uma técnica de desenvolvimento utilizada para reduzir a impedância da programação orientada aos objetos utilizando bancos de dados relacionais. As tabelas do banco de dados são representadas através de classes e os registros de cada tabela são representados como instâncias das classes correspondentes.
+``` bash
+# estrutura d pastas
+~/../../src/
+├── app
+│   ├── controllers
+│   └── models
+├── app.js
+├── config
+│   └── database.js
+├── database
+│   └── migrations
+├── routes.js
+└── server.js
 
-ORM & MVC
+yarn add sequelize
+yarn add sequelize-cli -D
+yarn add pg pg-hstore
+```
+
+MVC
 
 
 
