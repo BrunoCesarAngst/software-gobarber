@@ -75,11 +75,87 @@ Clico em test connection se deu tudo certo clico em save & connect, clique em cr
 docker start database - para reiniciar o container
 docker logs database - para observar algum possível erro
 ```
+ESlint, Prettier & EditorConfig
+``` bash
+yarn add eslint -D # o lint verifica a aplicação de padrões
+yarn eslint --init
+# selecione as seguintes opções:
+❯ To check syntax, find problems, and enforce code style
+❯ JavaScript modules (import/export)
+❯ None of these
+  Does your project use TypeScript? No
+❯◯ Node
+❯ Use a popular style guide
+❯ Airbnb: https://github.com/airbnb/javascript
+❯ JavaScript
+? Y
+# delete o arquivo package-lock.json e rode yarn
+yarn
+# no arquivo setting.json inclua:
+```
+```json
+"eslint.autoFixOnSave": true,
+	"eslint.validate": [
+		{
+			"language": "javascript",
+			"autoFix": true
+		},
+		{
+			"language": "javascriptreact",
+			"autoFix": true
+		},
+		{
+			"language": "typescript",
+			"autoFix": true
+		},
+		{
+			"language": "typescriptreact",
+			"autoFix": true
+		}
+  ],
+
+```
+``` js
+// no arquivo gerado .eslintrc.js inclua
+
+extends: [
+    'airbnb-base',
+    'prettier'
+  ],
+  plugins: ['prettier'],
+
+rules: {
+    "prettier/prettier": "error",
+    // quando existir o prettier retorna error.
+    "class-methods-use-this": "off",
+    // nem todo método dentro de uma class vai precisar do 'this'.
+    "no-param-reassign": "off",
+    // posso receber um parametro e fazer alterações no mesmo.
+    "camelcase": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
+    // estou dizendo que vou declarar essa variável, mesmo, não usundo-a.
+  },
+```
+``` bash
+# instalo mais essas ferramentas que controlaram a estética do código.
+yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+touch .prettierrc.json
+```
+``` json
+// no arquivo .prettierrc.json
+{
+  "singleQuote": true,
+  "trailingComa": "es5"
+}
+```
+```bash
+yarn eslint --fix src --ext .js
+```
+
+ORM & MVC
 
 
 
-ORM
-MVC
 Altenticação JWT
 Upload de imagens
 Validação
