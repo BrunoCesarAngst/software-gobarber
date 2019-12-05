@@ -6,7 +6,7 @@ import routes from './routes';
  * fazendo uso de classes no back-end é legal, pois, é dado nome as funcionalidades
  */
 class App {
-  // o método contructor é chamado automaticamente, quando instanciamos a class App
+  // o método constructor é chamado automaticamente, quando instanciamos a class App
   constructor() {
     this.server = express();
 

@@ -21,9 +21,9 @@ module.exports = {
     "class-methods-use-this": "off",
     // nem todo método dentro de uma class vai precisar do 'this'.
     "no-param-reassign": "off",
-    // posso receber um parametro e fazer alterações no mesmo.
+    // posso receber um parâmetro e fazer alterações no mesmo.
     "camelcase": "off",
     "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
-    // estou dizendo que vou declarar essa variável, mesmo, não usundo-a.
+    // estou dizendo que vou declarar essa variável, mesmo, não usando-a.
   },
 };

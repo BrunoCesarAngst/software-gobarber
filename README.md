@@ -1,10 +1,10 @@
-# software-gobarber
+# software-GoBarber
 Um software de agendamento de beleza
 
 Iniciando o projeto
 ``` bash
-mkdir software-gobarber
-cd software-gobarber
+mkdir software-GoBarber
+cd software-GoBarber
 yarn init -y
 yarn add express
 yarn add sucrase nodemon -D
@@ -42,7 +42,7 @@ touch nodemon.json
   ]
 ```
 
-Conseito de padronização de código
+Conceito de padronização de código
 `mkdir src`
 `cd src`
 `touch app.js`
@@ -65,11 +65,11 @@ Para visualizar os dados do Postgres eu uso o [Postbird](https://electronjs.org/
 
 No Postbird informo:
 
-usuario: postgres
+usuário: postgres
 
 senha: docker
 
-Clico em test connection se deu tudo certo clico em save & connect, clique em create database e dê um nome, nesse caso gobarber!
+Clico em test connection se deu tudo certo clico em save & connect, clique em create database e dê um nome, nesse caso GoBarber!
 
 ``` docker
 docker start database - para reiniciar o container
@@ -130,10 +130,10 @@ rules: {
     "class-methods-use-this": "off",
     // nem todo método dentro de uma class vai precisar do 'this'.
     "no-param-reassign": "off",
-    // posso receber um parametro e fazer alterações no mesmo.
+    // posso receber um parâmetro e fazer alterações no mesmo.
     "camelcase": "off",
     "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
-    // estou dizendo que vou declarar essa variável, mesmo, não usundo-a.
+    // estou dizendo que vou declarar essa variável, mesmo, não usando-a.
   },
 ```
 ``` bash
@@ -151,7 +151,8 @@ touch .prettierrc.json
 ```bash
 yarn eslint --fix src --ext .js
 ```
-Configurando o Sequelize(ORM) e estrutura de pastas
+## Configurando o Sequelize(ORM) e estrutura de pastas
+
 ORM (do inglês: Object-relational mapping) - Mapeamento objeto-relacional é uma técnica de desenvolvimento utilizada para reduzir a impedância da programação orientada aos objetos utilizando bancos de dados relacionais. As tabelas do banco de dados são representadas através de classes e os registros de cada tabela são representados como instâncias das classes correspondentes.
 ``` bash
 # estrutura d pastas
@@ -170,12 +171,23 @@ ORM (do inglês: Object-relational mapping) - Mapeamento objeto-relacional é um
 yarn add sequelize
 yarn add sequelize-cli -D
 yarn add pg pg-hstore
+
+# migration de usuário
+yarn sequelize migration:create --name=create-users
+database
+└── migrations
+    └── 20191205214748-create-users.json
+
+# após a criação da colunas das tabelas
+yarn sequelize db:migrate # para criar a tabela dentro do banco de dados
+yarn sequelize db:migrate:undo # para desfazer a última migration
+yarn sequelize db:migrate:undo:all # para desfazer todas as migrations
 ```
 
 MVC
 
 
 
-Altenticação JWT
+Autenticação JWT
 Upload de imagens
 Validação
