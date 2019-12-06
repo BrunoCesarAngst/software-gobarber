@@ -2,6 +2,7 @@ import express from 'express';
 import routes from './routes';
 // importando routes.js
 
+// recebendo a configuração da conexão.
 import './database';
 
 /**

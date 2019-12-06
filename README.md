@@ -151,7 +151,7 @@ touch .prettierrc.json
 ```bash
 yarn eslint --fix src --ext .js
 ```
-## Configurando o Sequelize(ORM) e estrutura de pastas
+## Configurando o Sequelize(ORM), estrutura de pastas e MVC
 
 ORM (do inglês: Object-relational mapping) - Mapeamento objeto-relacional é uma técnica de desenvolvimento utilizada para reduzir a impedância da programação orientada aos objetos utilizando bancos de dados relacionais. As tabelas do banco de dados são representadas através de classes e os registros de cada tabela são representados como instâncias das classes correspondentes.
 ``` bash
@@ -184,9 +184,25 @@ yarn sequelize db:migrate # para criar a tabela dentro do banco de dados
 # para fazer rollback enquanto estivermos desenvolvendo a 'feature'
 yarn sequelize db:migrate:undo # para desfazer a última migration
 yarn sequelize db:migrate:undo:all # para desfazer todas as migrations
+
+# Criar o model de usuário
+models
+└── User.js
+
+# Criando a conexão com a base de dados postgres, que carregue todas as models da nossa aplicação.
+database
+├── index.js # <- esse arquivo
+└── migrations
+    └── 20191205214748-create-users.js
+
+# criação e registro de usuários dentro da nossa API
+controllers
+└── UserController.js
+
+
 ```
 
-MVC
+
 
 
 

@@ -1,7 +1,13 @@
 import User from '../models/User';
 
+// essa é face do controller
 class UserController {
+  // é um cadastro de novos usuários
   async store(req, res) {
+    /**
+     * essa variável recebe um registro de busca, se o email passado é igual a
+     * um já existente na base de dados
+     */
     const userExists = await User.findOne({ where: { email: req.body.email } });
 
     if (userExists) {
@@ -20,3 +26,4 @@ class UserController {
 }
 
 export default new UserController();
+// exportamos para o arquivo ./routes.js
