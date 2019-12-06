@@ -177,9 +177,11 @@ yarn sequelize migration:create --name=create-users
 database
 └── migrations
     └── 20191205214748-create-users.json
+    # uma 'migration' para cada tabela
 
 # após a criação da colunas das tabelas
 yarn sequelize db:migrate # para criar a tabela dentro do banco de dados
+# para fazer rollback enquanto estivermos desenvolvendo a 'feature'
 yarn sequelize db:migrate:undo # para desfazer a última migration
 yarn sequelize db:migrate:undo:all # para desfazer todas as migrations
 ```
