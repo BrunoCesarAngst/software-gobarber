@@ -199,6 +199,8 @@ database
 controllers
 └── UserController.js
 
+# Gerando hash da senha no arquivo User.js
+yarn add bcryptjs
 
 ```
 
