@@ -201,13 +201,15 @@ controllers
 
 # Gerando hash da senha no arquivo User.js
 yarn add bcryptjs
+```
+## Autenticação JWT
+```bash
+# uma nova entidade um novo controller
+controllers
+├── SessionController.js # criamos esse arquivo
 
+yarn add jsonwebtoken
 ```
 
-
-
-
-
-Autenticação JWT
 Upload de imagens
 Validação
