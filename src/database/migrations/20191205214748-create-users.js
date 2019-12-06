@@ -29,12 +29,12 @@ module.exports = {
         allowNull: false
       },
       // armazena a data de criação
-      create_at: {
+      created_at: {
         type: Sequelize.DATE,
         allowNull: false
       },
       // armazena a data de alteração
-      update_at: {
+      updated_at: {
         type: Sequelize.DATE,
         allowNull: false
       }

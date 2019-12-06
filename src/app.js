@@ -2,6 +2,8 @@ import express from 'express';
 import routes from './routes';
 // importando routes.js
 
+import './database';
+
 /**
  * fazendo uso de classes no back-end é legal, pois, é dado nome as funcionalidades
  */
