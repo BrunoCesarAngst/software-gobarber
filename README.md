@@ -9,13 +9,15 @@ yarn init -y
 yarn add express
 yarn add sucrase nodemon -D
   # o sucrase é para trabalhar com sintaxe `import ... from '...';`.
-  # Criamos uma propriedade um script para rodar comandos na minha aplicação, no arquivo package.json, após o MIT assim:
+  # Criamos uma propriedade um script para rodar comandos na minha aplicação
+  # no arquivo package.json, após o MIT assim:
 ```
 ``` json
 "scripts": {
     "dev": "nodemon src/server.js",
     "dev:debug": "nodemon --inspect src/server.js"
-    // essa propriedade permite fazer debug no vscode, sem precisar reiniciar a plicação, configurando o aquivo launch.json como a seguir:
+    // essa propriedade permite fazer debug no vscode, sem precisar reiniciar a
+    // plicação, configurando o aquivo launch.json como a seguir:
   },
 ```
 ``` bash
@@ -221,7 +223,10 @@ middlewares
 ## Update do usuário
 A edição do cadastro do usuário, para poder alterar alguns campos cadastrais
 
-
+## Validando dados de entrada
+Usando a biblioteca 'yup', faremos essas validações com essa "schema validation".
+```bash
+yarn add yup
+```
 
 Upload de imagens
-Validação
