@@ -23,6 +23,13 @@ class UserController {
       provider
     });
   }
+
+  // esse método é para usuários fazerem alteração de cadastro, portanto, será acessível somente para usuários que estejam logados
+  async update(req, res) {
+    console.log(req.userId);
+
+    return res.json({ ok: true });
+  }
 }
 
 export default new UserController();

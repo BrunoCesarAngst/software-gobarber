@@ -210,6 +210,12 @@ controllers
 
 yarn add jsonwebtoken
 ```
+## Middleware de autenticação
+Bloqueando usuários a acessar algum tipo de rotas, caso não esteja logado, pensando na parte de edição do usuário. Vamos para o arquivo UserController.js
+
+Criamos a middleware de verificação de usuário no arquivo auth.js
+middlewares
+└── auth.js
 
 Upload de imagens
 Validação

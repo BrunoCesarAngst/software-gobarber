@@ -29,7 +29,7 @@ class SessionController {
       /**
        * jwt.sign tem 3 parâmetros:
        * - no primeiro parâmetro é o payload são informações que se queira
-       * incorporar no token.
+       * incorporar no token, nesse caso o id do usuário.
        * - o segundo é uma string, um texto que é único dessa aplicação;
        * que obtenho desse endereço https://www.md5online.org/.
        * gero um arquivo auth.js na parta config que configura esses dados
