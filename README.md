@@ -1,4 +1,10 @@
 # software-GoBarber
+
+<h2 align="center">
+    <img alt="alter project" src="/home/bruno/GitHub/software-gobarber/images/cabelobigodebarbas.png" width="100px" />
+</h2>
+
+
 Um software de agendamento de beleza
 
 Iniciando o projeto
