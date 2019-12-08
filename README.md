@@ -1,11 +1,15 @@
-# software-GoBarber
 
 <h2 align="center">
     <img alt="silhueta barba, cabelo e bigode" src="https://github.com/BrunoCesarAngst/software-gobarber/blob/master/images/cabelobigodebarbas.png" width="100px" />
 </h2>
 
+<h2 align="center">
+Software-GoBarber-Backend
+</h2>
 
+<h4 align="center">
 Um software de agendamento de beleza
+</h4>
 
 Iniciando o projeto
 ``` bash
