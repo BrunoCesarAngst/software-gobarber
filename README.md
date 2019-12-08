@@ -1,6 +1,6 @@
 
 <h2 align="center">
-    <img alt="silhueta barba, cabelo e bigode" src="https://github.com/BrunoCesarAngst/software-gobarber/blob/master/images/cabelobigodebarbas.png" width="100px" />
+    <img alt="silhueta barba, cabelo e bigode" src="https://github.com/BrunoCesarAngst/software-gobarber/blob/master/images/cabelobigodebarbas.png" width="80px" />
 </h2>
 
 <h2 align="center">
