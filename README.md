@@ -239,4 +239,9 @@ Usando a biblioteca 'yup', faremos essas validações com essa "schema validatio
 yarn add yup
 ```
 
-Upload de imagens
+## Upload de imagens
+```bash
+yarn add multer
+touch /home/bruno/GitHub/software-gobarber/src/config/multer.js
+touch /home/bruno/GitHub/software-gobarber/tmp/uploads
+```
