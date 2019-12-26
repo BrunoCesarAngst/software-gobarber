@@ -266,3 +266,12 @@ criamos uma nova rota em routes e uma novo controller (pois, é uma nova entidad
 ```bash
 touch /home/bruno/GitHub/software-gobarber/src/app/controllers/ProviderController.js
 ```
+## Migration e model de agendamento
+```bash
+# criamos uma nova tabela
+yarn sequelize migration:create --name=create-appointments
+# src/database/migrations/20191226200908-create-appointments.js
+yarn sequelize db:migrate
+# criamos o model de agendamento
+touch /home/bruno/GitHub/software-gobarber/src/app/models/Appointment.js
+```
