@@ -259,5 +259,10 @@ touch /home/bruno/GitHub/software-gobarber/src/app/models/File.js
 # então para refazer as tabelas existentes, criamos uma nova migration que cria
 # e adiciona essa nova coluna responsável por relacionar usuário com o avatar
 yarn sequelize migration:create --name=add-avatar-field-to-users
-touch /home/bruno/GitHub/software-gobarber/tmp/uploads
+yarn sequelize db:migrate
+```
+## Listagem de prestadores de serviço
+criamos uma nova rota em routes e uma novo controller (pois, é uma nova entidade) em:
+```bash
+touch /home/bruno/GitHub/software-gobarber/src/app/controllers/ProviderController.js
 ```

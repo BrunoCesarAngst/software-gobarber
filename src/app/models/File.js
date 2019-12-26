@@ -15,7 +15,15 @@ class File extends Model {
        */
       {
         name: Sequelize.STRING,
-        path: Sequelize.STRING
+        path: Sequelize.STRING,
+        // criando um campo virtual para facilitando para o frontEnd.
+        url: {
+          type: Sequelize.VIRTUAL,
+          // o método get é como eu quero formatar o valor
+          get() {
+            return `http://localhost:3333/files/${this.path}`;
+          }
+        }
       },
       /**
        * - o segundo um objeto recebendo como configuração o sequelize.

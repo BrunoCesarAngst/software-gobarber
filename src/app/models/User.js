@@ -59,7 +59,8 @@ class User extends Model {
      * arquivo sendo armazenado no model de usuário informando qual é a coluna
      * de Users que vai armazenar a referencia da tabela Files.
      */
-    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
+    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
+    // passamos um alias para esse relacionamento
   }
 
   // validando a senha do usuário

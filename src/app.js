@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import routes from './routes';
 // importando routes.js
 
@@ -21,6 +22,15 @@ class App {
   middlewares() {
     this.server.use(express.json());
     // para poder receber requisições no formato json
+    /**
+     * usando o recurso de express.static, que podem ser acessados pelo
+     * navegador
+     */
+    this.server.use(
+      // /files é a rota que serve os arquivos estáticos
+      '/files',
+      express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
+    );
   }
 
   routes() {

@@ -5,6 +5,7 @@ import multerConfig from './config/multer';
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
+import ProviderController from './app/controllers/ProviderController';
 
 // importando a middleware de autenticação
 import authMiddleware from './app/middlewares/auth';
@@ -20,6 +21,9 @@ routes.use(authMiddleware);
 
 // rota para alteração de cadastro de usuário.
 routes.put('/users', UserController.update);
+
+// Listagem de prestadores de serviço
+routes.get('/providers', ProviderController.index);
 
 /**
  * upload.single('file') é uma middleware recebendo do campo de requisição
