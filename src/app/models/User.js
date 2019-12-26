@@ -49,6 +49,19 @@ class User extends Model {
     return this;
   }
 
+  /**
+   * criamos o método para fazer a relacionamento entre o model User e File.
+   * associate recebe todos os models
+   */
+  static associate(models) {
+    /**
+     * this.belongsTo, este pertence para o model de File, teremos um id de
+     * arquivo sendo armazenado no model de usuário informando qual é a coluna
+     * de Users que vai armazenar a referencia da tabela Files.
+     */
+    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
+  }
+
   // validando a senha do usuário
   checkPassword(password) {
     return bcrypt.compare(password, this.password_hash);

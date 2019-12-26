@@ -245,3 +245,19 @@ yarn add multer
 touch /home/bruno/GitHub/software-gobarber/src/config/multer.js
 touch /home/bruno/GitHub/software-gobarber/tmp/uploads
 ```
+### Avatar do usuário
+associando o avatar ao usuário
+```bash
+touch /home/bruno/GitHub/software-gobarber/src/app/controllers/FileController.js
+# criamos a tabela que armazena os arquivos
+yarn sequelize migration:create --name=create-files
+# configuramos as colunas conforme necessário e rodamos
+yarn sequelize db:migrate
+# criamos o model da tabela
+touch /home/bruno/GitHub/software-gobarber/src/app/models/File.js
+# importamos esse arquivo em index.js da pasta database
+# então para refazer as tabelas existentes, criamos uma nova migration que cria
+# e adiciona essa nova coluna responsável por relacionar usuário com o avatar
+yarn sequelize migration:create --name=add-avatar-field-to-users
+touch /home/bruno/GitHub/software-gobarber/tmp/uploads
+```

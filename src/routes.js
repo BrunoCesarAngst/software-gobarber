@@ -4,6 +4,7 @@ import multerConfig from './config/multer';
 
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
+import FileController from './app/controllers/FileController';
 
 // importando a middleware de autenticação
 import authMiddleware from './app/middlewares/auth';
@@ -24,8 +25,6 @@ routes.put('/users', UserController.update);
  * upload.single('file') é uma middleware recebendo do campo de requisição
  * 'file', somente um arquivo.
  */
-routes.post('/files', upload.single('file'), (req, res) => {
-  return res.json(req.file);
-});
+routes.post('/files', upload.single('file'), FileController.store);
 
 export default routes;
