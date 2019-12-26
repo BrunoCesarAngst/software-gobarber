@@ -274,4 +274,12 @@ yarn sequelize migration:create --name=create-appointments
 yarn sequelize db:migrate
 # criamos o model de agendamento
 touch /home/bruno/GitHub/software-gobarber/src/app/models/Appointment.js
+# importamos esse arquivo em index.js da pasta database, incluindo no array de
+# models
+```
+## Agendamento de serviço
+```bash
+# criamos o controller de agendamento
+touch /home/bruno/GitHub/software-gobarber/src/app/controllers/AppointmentController.js
+# importamos esse arquivo em routes.js
 ```

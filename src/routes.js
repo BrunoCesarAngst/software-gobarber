@@ -6,6 +6,7 @@ import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
 import ProviderController from './app/controllers/ProviderController';
+import AppointmentController from './app/controllers/AppointmentController';
 
 // importando a middleware de autenticação
 import authMiddleware from './app/middlewares/auth';
@@ -24,6 +25,9 @@ routes.put('/users', UserController.update);
 
 // Listagem de prestadores de serviço
 routes.get('/providers', ProviderController.index);
+
+// Agendamento de serviço
+routes.post('/appointments', AppointmentController.store);
 
 /**
  * upload.single('file') é uma middleware recebendo do campo de requisição
