@@ -32,6 +32,8 @@ routes.get('/providers', ProviderController.index);
 routes.get('/appointments', AppointmentController.index);
 // Agendamento de serviço
 routes.post('/appointments', AppointmentController.store);
+// Cancelamento de agendamento
+routes.delete('/appointments/:id', AppointmentController.delete);
 
 // Listando agenda do prestador
 routes.get('/schedule', ScheduleController.index);

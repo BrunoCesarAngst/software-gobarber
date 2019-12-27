@@ -328,4 +328,8 @@ criamos a rota no arquivo routes.js criando o arquivo NotificationController.js
 touch /home/bruno/GitHub/software-gobarber/src/app/controllers/NotificationController.js
 ```
 ### Marcar notificações como lidas
+criamos a rota no arquivo routes.js e no controller NotificationController.js incluímos o método update.
+
+### Cancelamento de agendamento
+o usuário poderá cancelar duas horas antes do horário marcado.
 criamos a rota no arquivo routes.js

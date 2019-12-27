@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { startOfHour, parseISO, isBefore, format } from 'date-fns';
+import { startOfHour, parseISO, isBefore, format, subHours } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 import User from '../models/User';
 import File from '../models/File';
@@ -61,8 +61,10 @@ class AppointmentController {
 
     const userLogged = await User.findByPk(req.userId);
 
-    if (userLogged) {
-      return res.status(401).json({ error: 'Order inconsistency' });
+    if (provider_id === req.userId) {
+      return res
+        .status(401)
+        .json({ error: 'You cannot schedule a service for yourself.' });
     }
 
     if (!isProvider) {
@@ -116,6 +118,38 @@ class AppointmentController {
       content: `Novo agendamento de ${user.name} para o ${formattedDate}`,
       user: provider_id
     });
+
+    return res.json(appointment);
+  }
+
+  async delete(req, res) {
+    // pegando o id bo banco de dados
+    const appointment = await Appointment.findByPk(req.params.id);
+
+    // verificando se usuário logado é o dono do agendamento.
+    if (appointment.user_id !== req.userId) {
+      return res.status(401).json({
+        error: "You don't permission to cancel this appointment!"
+      });
+    }
+
+    // subtraindo duas horas do horário agendado.
+    const dateWithSub = subHours(appointment.date, 2);
+
+    /**
+     * se o dateWithSub for antes da hora atual, não se pode cancelar o
+     * agendamento
+     */
+    if (isBefore(dateWithSub, new Date())) {
+      return res.status(401).json({
+        error: 'You can only cancel appointment 2 hours in advance.'
+      });
+    }
+
+    // "setando" o canceled_at
+    appointment.canceled_at = new Date();
+
+    await appointment.save();
 
     return res.json(appointment);
   }
