@@ -321,3 +321,9 @@ touch /home/bruno/GitHub/software-gobarber/src/app/schemas/Notification.js
 ```
 e no controller AppointmentController.js geramos a notificação e para visualizar
 esse banco usamos o [MongoDB Compass Community](https://www.mongodb.com/download-center/compass)
+
+### Listando notificações do usuário
+criamos a rota no arquivo routes.js criando o arquivo NotificationController.js
+```bash
+touch /home/bruno/GitHub/software-gobarber/src/app/controllers/NotificationController.js
+```

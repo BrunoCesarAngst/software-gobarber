@@ -8,6 +8,7 @@ import FileController from './app/controllers/FileController';
 import ProviderController from './app/controllers/ProviderController';
 import AppointmentController from './app/controllers/AppointmentController';
 import ScheduleController from './app/controllers/ScheduleController';
+import NotificationController from './app/controllers/NotificationController';
 
 // importando a middleware de autenticação
 import authMiddleware from './app/middlewares/auth';
@@ -34,6 +35,9 @@ routes.post('/appointments', AppointmentController.store);
 
 // Listando agenda do prestador
 routes.get('/schedule', ScheduleController.index);
+
+// Listando notificações do usuário
+routes.get('/notifications', NotificationController.index);
 
 /**
  * upload.single('file') é uma middleware recebendo do campo de requisição

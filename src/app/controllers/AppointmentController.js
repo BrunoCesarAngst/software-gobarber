@@ -53,16 +53,22 @@ class AppointmentController {
     const { provider_id, date } = req.body;
 
     /**
-     * checando se provider_id é um provider
+     * checando se provider_id não é o usuário logado e se é um prestador
      */
     const isProvider = await User.findOne({
       where: { id: provider_id, provider: true }
     });
 
+    const userLogged = await User.findByPk(req.userId);
+
+    if (userLogged) {
+      return res.status(401).json({ error: 'Order inconsistency' });
+    }
+
     if (!isProvider) {
       return res
         .status(401)
-        .json({ error: 'you can only create appointment with providers!' });
+        .json({ error: 'You can only create appointment with providers!' });
     }
 
     /**
