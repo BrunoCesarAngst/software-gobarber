@@ -10,5 +10,8 @@
     "**/.history": true,
     ".history": true
   },
-  "explorerExclude.backup": null
+  "explorerExclude.backup": null,
+  "cSpell.words": [
+    "mm'h"
+  ]
 }

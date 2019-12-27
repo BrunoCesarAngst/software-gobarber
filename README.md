@@ -312,3 +312,12 @@ yarn add mongoose
 # configuramos a conexão do mongodb no arquivo em index.js da pasta database
 # criando um segundo método.
 ```
+### Notificando novos agendamentos
+enviando uma notificação ao prestador sobre os novos agendamentos
+vamos armazenar as notificações dentro do mongodb
+```bash
+# criando as schemas que são as models do mongo
+touch /home/bruno/GitHub/software-gobarber/src/app/schemas/Notification.js
+```
+e no controller AppointmentController.js geramos a notificação e para visualizar
+esse banco usamos o [MongoDB Compass Community](https://www.mongodb.com/download-center/compass)
