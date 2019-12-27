@@ -33,7 +33,8 @@ export default async (req, res, next) => {
 
     /**
      * aqui incluímos o id do usuário no req(requisição), para reconhecer o
-     * usuário com seu respectivo token
+     * usuário com seu respectivo token.
+     * req.userId é um usuário logado!
      */
     req.userId = decoded.id;
 

@@ -295,3 +295,9 @@ trabalhamos no arquivo AppointmentController
 
 ### Aplicando paginação
 trabalhamos no arquivo AppointmentController
+
+### Listando agenda do prestador
+```bash
+touch /home/bruno/GitHub/software-gobarber/src/app/controllers/ScheduleController.js
+# criamos essa nova rota em routes.js
+```
