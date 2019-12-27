@@ -38,6 +38,8 @@ routes.get('/schedule', ScheduleController.index);
 
 // Listando notificações do usuário
 routes.get('/notifications', NotificationController.index);
+// Marcar notificações como lidas
+routes.put('/notifications/:id', NotificationController.update);
 
 /**
  * upload.single('file') é uma middleware recebendo do campo de requisição
