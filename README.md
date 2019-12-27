@@ -163,7 +163,7 @@ touch .prettierrc.json
 ```bash
 yarn eslint --fix src --ext .js
 ```
-## Configurando o Sequelize(ORM), estrutura de pastas e MVC
+### Configurando o Sequelize(ORM), estrutura de pastas e MVC
 
 ORM (do inglês: Object-relational mapping) - Mapeamento objeto-relacional é uma técnica de desenvolvimento utilizada para reduzir a impedância da programação orientada aos objetos utilizando bancos de dados relacionais. As tabelas do banco de dados são representadas através de classes e os registros de cada tabela são representados como instâncias das classes correspondentes.
 ``` bash
@@ -214,7 +214,7 @@ controllers
 # Gerando hash da senha no arquivo User.js
 yarn add bcryptjs
 ```
-## Autenticação JWT
+### Autenticação JWT
 ```bash
 # uma nova entidade um novo controller
 controllers
@@ -222,7 +222,7 @@ controllers
 
 yarn add jsonwebtoken
 ```
-## Middleware de autenticação
+### Middleware de autenticação
 Bloqueando usuários a acessar algum tipo de rotas, caso não esteja logado, pensando na parte de edição do usuário. Vamos para o arquivo UserController.js
 
 Criamos a middleware de verificação de usuário no arquivo auth.js
@@ -230,22 +230,22 @@ Criamos a middleware de verificação de usuário no arquivo auth.js
 middlewares
 └── auth.js
 ```
-## Update do usuário
+### Update do usuário
 A edição do cadastro do usuário, para poder alterar alguns campos cadastrais
 
-## Validando dados de entrada
+### Validando dados de entrada
 Usando a biblioteca 'yup', faremos essas validações com essa "schema validation".
 ```bash
 yarn add yup
 ```
 
-## Upload de imagens
+### Upload de imagens
 ```bash
 yarn add multer
 touch /home/bruno/GitHub/software-gobarber/src/config/multer.js
 touch /home/bruno/GitHub/software-gobarber/tmp/uploads
 ```
-### Avatar do usuário
+#### Avatar do usuário
 associando o avatar ao usuário
 ```bash
 touch /home/bruno/GitHub/software-gobarber/src/app/controllers/FileController.js
@@ -261,12 +261,12 @@ touch /home/bruno/GitHub/software-gobarber/src/app/models/File.js
 yarn sequelize migration:create --name=add-avatar-field-to-users
 yarn sequelize db:migrate
 ```
-## Listagem de prestadores de serviço
+### Listagem de prestadores de serviço
 criamos uma nova rota em routes e uma novo controller (pois, é uma nova entidade) em:
 ```bash
 touch /home/bruno/GitHub/software-gobarber/src/app/controllers/ProviderController.js
 ```
-## Migration e model de agendamento
+### Migration e model de agendamento
 ```bash
 # criamos uma nova tabela
 yarn sequelize migration:create --name=create-appointments
@@ -277,9 +277,14 @@ touch /home/bruno/GitHub/software-gobarber/src/app/models/Appointment.js
 # importamos esse arquivo em index.js da pasta database, incluindo no array de
 # models
 ```
-## Agendamento de serviço
+### Agendamento de serviço
 ```bash
 # criamos o controller de agendamento
 touch /home/bruno/GitHub/software-gobarber/src/app/controllers/AppointmentController.js
 # importamos esse arquivo em routes.js
+```
+### Validações de agendamento
+validando se o horário é futuro se já está comprometido e fazer marcações de hora em hora.
+```bash
+yarn add date-fns@next
 ```
