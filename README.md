@@ -292,3 +292,6 @@ yarn add date-fns@next
 ### Listando agendamentos do usuário
 criamos essa nova rota em routes.js
 trabalhamos no arquivo AppointmentController
+
+### Aplicando paginação
+trabalhamos no arquivo AppointmentController
