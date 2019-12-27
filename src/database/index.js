@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize';
+import mongoose from 'mongoose';
 
 // importando a model e cria um array das models
 import User from '../app/models/User';
@@ -15,10 +16,12 @@ class Database {
     /** chamamos o método init para separar essa classe em mais métodos, pois
      * teremos outras conexões  */
     this.init();
+    this.mongo();
   }
 
   /**
-   * esse método init é responsável pela conexão com a base de dados e carregar as models.
+   * esse método init é responsável pela conexão com a base de dados (postgres)
+   * e carregar as models.
    */
   init() {
     /**
@@ -37,6 +40,24 @@ class Database {
     models.map(model => model.init(this.connection));
     models.map(
       model => model.associate && model.associate(this.connection.models)
+    );
+  }
+
+  // criando outro método para a conexão com o mongo.
+  mongo() {
+    this.mongoConnection = mongoose.connect(
+      // a url de conexão do mongo
+      'mongodb://localhost:27017/gobarber',
+      /**
+       * para usar o novo mecanismo de detecção e monitoramento de servidor;
+       * usando o formato novo de url do mongo;
+       * configurando a forma de procurar e alterar no mongo
+       */
+      {
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
+        useFindAndModify: true
+      }
     );
   }
 }

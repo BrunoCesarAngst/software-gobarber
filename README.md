@@ -301,3 +301,14 @@ trabalhamos no arquivo AppointmentController
 touch /home/bruno/GitHub/software-gobarber/src/app/controllers/ScheduleController.js
 # criamos essa nova rota em routes.js
 ```
+### Configurando MongoDB
+trabalhando com dados não estruturados e não relacionados que precisão de performance com MongoDB no ORM Mongoose, dentro de um container Docker.
+```bash
+# subindo um container com a imagem do mongo.
+docker run --name mongobarber -p 27017:27017 -d -t mongo
+# verifico no browser localhost:27017 a mensagem - It looks like you are trying to access MongoDB over HTTP on the native driver port.
+# instalando o ORM
+yarn add mongoose
+# configuramos a conexão do mongodb no arquivo em index.js da pasta database
+# criando um segundo método.
+```
