@@ -287,4 +287,8 @@ touch /home/bruno/GitHub/software-gobarber/src/app/controllers/AppointmentContro
 validando se o horário é futuro se já está comprometido e fazer marcações de hora em hora.
 ```bash
 yarn add date-fns@next
+# então trabalhamos as validações no arquivo AppointmentController.js
 ```
+### Listando agendamentos do usuário
+criamos essa nova rota em routes.js
+trabalhamos no arquivo AppointmentController

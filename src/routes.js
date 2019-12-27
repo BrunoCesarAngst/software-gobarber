@@ -26,6 +26,8 @@ routes.put('/users', UserController.update);
 // Listagem de prestadores de serviço
 routes.get('/providers', ProviderController.index);
 
+// Listando agendamentos do usuário
+routes.get('/appointments', AppointmentController.index);
 // Agendamento de serviço
 routes.post('/appointments', AppointmentController.store);
 
