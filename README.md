@@ -348,3 +348,20 @@ touch /home/bruno/GitHub/software-gobarber/src/lib/Mail.js
 # isolado e o arquivo Mail.js é a configuração do email
 ```
 em AppointController.js configuramos a parte que envia o email
+
+### Configurando templates de e-mail
+usando template engine, arquivos HTML que podem receber variáveis do node, faremos uso do [Handlebars](https://handlebarsjs.com/)
+```bash
+# instalando os pacotes
+yarn add express-handlebars nodemailer-express-handlebars
+# importo esses pacotes em Mail.js
+# gero a seguinte estrutura de arquivos
+app/views
+      └── emails
+          ├── cancellation.hbs
+          ├── layouts
+          │   └── default.hbs
+          └── partials
+              └── footer.hbs
+# então configuro o template em Mail.js
+```

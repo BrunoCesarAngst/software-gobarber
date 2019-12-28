@@ -109,10 +109,14 @@ class AppointmentController {
     // usuário logado
     const user = await User.findByPk(req.userId);
     // formatando a data para a notificação, aspas simples não formata.
-    const formattedDate = format(hourStart, "'dia' dd 'de' MMM', às' H:mm'h'", {
-      // traduzindo o mês
-      locale: pt
-    });
+    const formattedDate = format(
+      hourStart,
+      "'dia' dd 'de' MMMM', às' H:mm'h'",
+      {
+        // traduzindo o mês
+        locale: pt
+      }
+    );
 
     await Notification.create({
       content: `Novo agendamento de ${user.name} para o ${formattedDate}`,
@@ -136,6 +140,11 @@ class AppointmentController {
           as: 'provider',
           // pegando os dados relevantes
           attributes: ['name', 'email']
+        },
+        {
+          model: User,
+          as: 'user',
+          attributes: ['name']
         }
       ]
     });
@@ -170,7 +179,16 @@ class AppointmentController {
       // usando os dados de provider
       to: `${appointment.provider.name} <${appointment.provider.email}>`,
       subject: 'Agendamento cancelado!',
-      text: 'Você tem um novo cancelamento'
+      // passando o template que será usado.
+      template: 'cancellation',
+      // context está enviando todas as variáveis necessárias para o template
+      context: {
+        provider: appointment.provider.name,
+        user: appointment.user.name,
+        date: format(appointment.date, "'Dia' dd 'de' MMMM', às' H:mm'h'", {
+          locale: pt
+        })
+      }
     });
 
     return res.json(appointment);
