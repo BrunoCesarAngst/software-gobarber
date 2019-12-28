@@ -363,5 +363,26 @@ app/views
           │   └── default.hbs
           └── partials
               └── footer.hbs
-# então configuro o template em Mail.js
+# então configuro o template em Mail.js e em AppointController.js
+```
+### Configurando fila com Redis
+trabalhando com background jobs(trabalhos em segundo plano) configurando em nossa aplicação alguns serviços que ficão rodando em segundo plano, nesse caso, usamos um banco que usa chave e valor no caso Redis não relacional dando mais capacidade de registro sem perder a performance.
+```bash
+# subimos um container com o Redis
+docker run --name redisbarber -p 6379:6379 -d -t redis:alpine
+```
+também vamos instalar uma ferramenta de fila dentro do Node.js para background jobs o [Bee-queue](https://github.com/bee-queue/bee-queue)
+```bash
+yarn add bee-queue
+# criamos novos arquivos
+touch /home/bruno/GitHub/software-gobarber/src/lib/Queue.js
+touch /home/bruno/GitHub/software-gobarber/src/app/jobs/CancellationMail.js
+touch /home/bruno/GitHub/software-gobarber/src/config/redis.js
+# mudo forma da passagem do email no arquivo AppointController.js importando a
+# fila
+touch /home/bruno/GitHub/software-gobarber/src/queue.js
+# com esse arquivo esse processo não vai estar rodando no mesmo Node, pois, a
+# fila pode estar rodando em um servidor num core do processador, com mais ou
+# menos recursos, totalmente separado, assim a fila não atrapalha a performance
+# da nossa aplicação
 ```

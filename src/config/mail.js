@@ -4,8 +4,8 @@ export default {
   port: '2525',
   secure: false,
   auth: {
-    user: '168ba13c8cd337',
-    pass: '8b7c0fddfe60ab'
+    user: 'deae42c2a07d4d',
+    pass: '9aec8113ec5181'
   },
   default: {
     from: 'Equipe GoBarber <noreply@gobarber.com>'

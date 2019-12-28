@@ -6,7 +6,10 @@ import File from '../models/File';
 import Appointment from '../models/Appointment';
 import Notification from '../schemas/Notification';
 
-import Mail from '../../lib/Mail';
+// importando o job de cancelamento
+import CancellationMail from '../jobs/CancellationMail';
+// importando a fila
+import Queue from '../../lib/Queue';
 
 class AppointmentController {
   // Listando agendamentos do usuário
@@ -175,20 +178,8 @@ class AppointmentController {
     await appointment.save();
 
     // após o cancelamento do serviço enviamos o email.
-    await Mail.sendMail({
-      // usando os dados de provider
-      to: `${appointment.provider.name} <${appointment.provider.email}>`,
-      subject: 'Agendamento cancelado!',
-      // passando o template que será usado.
-      template: 'cancellation',
-      // context está enviando todas as variáveis necessárias para o template
-      context: {
-        provider: appointment.provider.name,
-        user: appointment.user.name,
-        date: format(appointment.date, "'Dia' dd 'de' MMMM', às' H:mm'h'", {
-          locale: pt
-        })
-      }
+    await Queue.add(CancellationMail.key, {
+      Appointment
     });
 
     return res.json(appointment);
