@@ -6,6 +6,8 @@ import File from '../models/File';
 import Appointment from '../models/Appointment';
 import Notification from '../schemas/Notification';
 
+import Mail from '../../lib/Mail';
+
 class AppointmentController {
   // Listando agendamentos do usuário
   async index(req, res) {
@@ -58,8 +60,6 @@ class AppointmentController {
     const isProvider = await User.findOne({
       where: { id: provider_id, provider: true }
     });
-
-    const userLogged = await User.findByPk(req.userId);
 
     if (provider_id === req.userId) {
       return res
@@ -123,8 +123,22 @@ class AppointmentController {
   }
 
   async delete(req, res) {
-    // pegando o id bo banco de dados
-    const appointment = await Appointment.findByPk(req.params.id);
+    // pegando o id do banco de dados
+    const appointment = await Appointment.findByPk(req.params.id, {
+      /**
+       * aqui nesse objeto é possível com o include do sequelize pegar os dados
+       * do prestador
+       */
+      include: [
+        {
+          model: User,
+          // informo que é os dados de provider
+          as: 'provider',
+          // pegando os dados relevantes
+          attributes: ['name', 'email']
+        }
+      ]
+    });
 
     // verificando se usuário logado é o dono do agendamento.
     if (appointment.user_id !== req.userId) {
@@ -150,6 +164,14 @@ class AppointmentController {
     appointment.canceled_at = new Date();
 
     await appointment.save();
+
+    // após o cancelamento do serviço enviamos o email.
+    await Mail.sendMail({
+      // usando os dados de provider
+      to: `${appointment.provider.name} <${appointment.provider.email}>`,
+      subject: 'Agendamento cancelado!',
+      text: 'Você tem um novo cancelamento'
+    });
 
     return res.json(appointment);
   }

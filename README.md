@@ -332,4 +332,18 @@ criamos a rota no arquivo routes.js e no controller NotificationController.js in
 
 ### Cancelamento de agendamento
 o usuário poderá cancelar duas horas antes do horário marcado.
-criamos a rota no arquivo routes.js
+criamos a rota no arquivo routes.jse no controller AppointmentController.js incluímos o método delete.
+
+### Configurando Nodemailer
+enviando ao prestador um email com o aviso de cancelamento.
+```bash
+yarn add nodemailer
+# crio o arquivo de configuração de envios de email.
+touch /home/bruno/GitHub/software-gobarber/src/config/mail.js
+```
+utilizando [mailtrap](https://mailtrap.io/) (somente para ambiente de desenvolvimento!)
+```bash
+touch /home/bruno/GitHub/software-gobarber/src/lib/Mail.js
+# na pasta lib é onde colocamos configurações adicionais, para ficar mais
+# isolado e o arquivo Mail.js é a configuração do email
+```
