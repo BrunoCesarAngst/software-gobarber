@@ -16,7 +16,10 @@ class Mail {
     });
   }
 
-  // essa é parte que envia o email
+  /**
+   * essa é parte que envia o email, que recebe a mensagem de
+   * AppointController.js
+   */
   sendMail(message) {
     return this.transporter.sendMail({
       ...mailConfig.default,

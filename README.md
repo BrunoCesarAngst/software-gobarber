@@ -347,3 +347,4 @@ touch /home/bruno/GitHub/software-gobarber/src/lib/Mail.js
 # na pasta lib é onde colocamos configurações adicionais, para ficar mais
 # isolado e o arquivo Mail.js é a configuração do email
 ```
+em AppointController.js configuramos a parte que envia o email
