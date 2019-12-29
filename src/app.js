@@ -1,5 +1,9 @@
 import express from 'express';
 import path from 'path';
+import Youch from 'youch';
+import * as Sentry from '@sentry/node';
+import sentryConfig from './config/sentry';
+import 'express-async-errors';
 import routes from './routes';
 // importando routes.js
 
@@ -14,12 +18,16 @@ class App {
   constructor() {
     this.server = express();
 
+    Sentry.init(sentryConfig);
+
     // chamando os métodos
     this.middlewares();
     this.routes();
+    this.exceptionHandler();
   }
 
   middlewares() {
+    this.server.use(Sentry.Handlers.requestHandler());
     this.server.use(express.json());
     // para poder receber requisições no formato json
     /**
@@ -37,6 +45,15 @@ class App {
     this.server.use(routes);
     // recebendo as rotas importando-as de outro arquivo o routes.js
     // as routes também são middlewares é possível passar elas pelo 'use'
+    this.server.use(Sentry.Handlers.errorHandler());
+  }
+
+  exceptionHandler() {
+    this.server.use(async (err, req, res, next) => {
+      const errors = await new Youch(err, req).toJSON();
+
+      return res.status(500).json(errors)
+    });
   }
 }
 

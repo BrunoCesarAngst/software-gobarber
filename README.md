@@ -397,3 +397,13 @@ touch src/app/controllers/AvailableController.js
 ```
 ### Campos virtuais no agendamento
 colocando informações importante em Appointment.js e AppointController.js
+
+### Tratamento de exceções
+usando uma ferramenta de monitoramento de erros [Sentry](https://sentry.io/), cria uma conta e configura um novo projeto com Express, e o Sentry vai passar o passo a passo
+```bash
+yarn add @sentry/node@5.10.2
+# para resolver o problema do async atrapalhar o envio de erro para o Sentry
+yarn add express-async-errors
+# e para mostrar esse erros no insomnia instalo
+yarn add youch
+```
