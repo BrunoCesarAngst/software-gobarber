@@ -179,7 +179,7 @@ class AppointmentController {
 
     // após o cancelamento do serviço enviamos o email.
     await Queue.add(CancellationMail.key, {
-      Appointment
+      appointment
     });
 
     return res.json(appointment);

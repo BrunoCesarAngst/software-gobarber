@@ -46,6 +46,7 @@ class Queue {
          * handle processa a fila recebendo as variáveis dos nossos emails por
          * ex
          */
+
         handle
       };
     });
