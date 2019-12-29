@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
+import { isBefore, subHours } from 'date-fns';
 
 class Appointment extends Model {
   // um método que é chamado automaticamente pelo sequelize
@@ -15,7 +16,22 @@ class Appointment extends Model {
        */
       {
         date: Sequelize.DATE,
-        canceled_at: Sequelize.DATE
+        canceled_at: Sequelize.DATE,
+        // Campos virtuais no agendamento
+        past: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            // se já passou o horário
+            return isBefore(this.date, new Date());
+          }
+        },
+        cancelable: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            // se ainda é cancelável
+            return isBefore(new Date(), subHours(this.date, 2));
+          }
+        }
       },
       /**
        * - o segundo um objeto recebendo como configuração o sequelize.

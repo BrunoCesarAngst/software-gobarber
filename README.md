@@ -396,3 +396,4 @@ crio uma rota em routes.js listando os horários disponíveis de um prestador em
 touch src/app/controllers/AvailableController.js
 ```
 ### Campos virtuais no agendamento
+colocando informações importante em Appointment.js e AppointController.js
