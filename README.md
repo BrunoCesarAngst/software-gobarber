@@ -386,3 +386,5 @@ touch /home/bruno/GitHub/software-gobarber/src/queue.js
 # menos recursos, totalmente separado, assim a fila não atrapalha a performance
 # da nossa aplicação
 ```
+### Monitorando falhas na fila
+então configuro o arquivo Queue.js

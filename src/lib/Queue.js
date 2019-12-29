@@ -74,10 +74,18 @@ class Queue {
       const { bee, handle } = this.queues[job.key];
 
       /**
-       * então pego a fila(bee) processando com o parâmetro(handle)
+       * então pego a fila(bee) processando com o parâmetro(handle).
+       * através do .on() podemos ouvir eventos, nessa caso os de falha em fila
        */
-      bee.process(handle);
+      bee.on('failed', this.handleFailure).process(handle);
     });
+  }
+
+  /**
+   * este método mostra em qual job contém uma falha.
+   */
+  handleFailure(job, err) {
+    console.log(`Queue ${job.queue.name}: FAILED`, err);
   }
 }
 
