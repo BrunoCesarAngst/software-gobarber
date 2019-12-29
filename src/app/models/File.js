@@ -21,7 +21,7 @@ class File extends Model {
           type: Sequelize.VIRTUAL,
           // o método get é como eu quero formatar o valor
           get() {
-            return `http://localhost:3333/files/${this.path}`;
+            return `${process.env.APP_URL}/files/${this.path}`;
           }
         }
       },
