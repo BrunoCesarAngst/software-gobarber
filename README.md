@@ -242,19 +242,19 @@ yarn add yup
 ### Upload de imagens
 ```bash
 yarn add multer
-touch /home/bruno/GitHub/software-gobarber/src/config/multer.js
-touch /home/bruno/GitHub/software-gobarber/tmp/uploads
+touch src/config/multer.js
+touch tmp/uploads
 ```
 #### Avatar do usuário
 associando o avatar ao usuário
 ```bash
-touch /home/bruno/GitHub/software-gobarber/src/app/controllers/FileController.js
+touch src/app/controllers/FileController.js
 # criamos a tabela que armazena os arquivos
 yarn sequelize migration:create --name=create-files
 # configuramos as colunas conforme necessário e rodamos
 yarn sequelize db:migrate
 # criamos o model da tabela
-touch /home/bruno/GitHub/software-gobarber/src/app/models/File.js
+touch src/app/models/File.js
 # importamos esse arquivo em index.js da pasta database
 # então para refazer as tabelas existentes, criamos uma nova migration que cria
 # e adiciona essa nova coluna responsável por relacionar usuário com o avatar
@@ -264,7 +264,7 @@ yarn sequelize db:migrate
 ### Listagem de prestadores de serviço
 criamos uma nova rota em routes e uma novo controller (pois, é uma nova entidade) em:
 ```bash
-touch /home/bruno/GitHub/software-gobarber/src/app/controllers/ProviderController.js
+touch src/app/controllers/ProviderController.js
 ```
 ### Migration e model de agendamento
 ```bash
@@ -273,14 +273,14 @@ yarn sequelize migration:create --name=create-appointments
 # src/database/migrations/20191226200908-create-appointments.js
 yarn sequelize db:migrate
 # criamos o model de agendamento
-touch /home/bruno/GitHub/software-gobarber/src/app/models/Appointment.js
+touch src/app/models/Appointment.js
 # importamos esse arquivo em index.js da pasta database, incluindo no array de
 # models
 ```
 ### Agendamento de serviço
 ```bash
 # criamos o controller de agendamento
-touch /home/bruno/GitHub/software-gobarber/src/app/controllers/AppointmentController.js
+touch src/app/controllers/AppointmentController.js
 # importamos esse arquivo em routes.js
 ```
 ### Validações de agendamento
@@ -298,7 +298,7 @@ trabalhamos no arquivo AppointmentController
 
 ### Listando agenda do prestador
 ```bash
-touch /home/bruno/GitHub/software-gobarber/src/app/controllers/ScheduleController.js
+touch src/app/controllers/ScheduleController.js
 # criamos essa nova rota em routes.js
 ```
 ### Configurando MongoDB
@@ -317,7 +317,7 @@ enviando uma notificação ao prestador sobre os novos agendamentos
 vamos armazenar as notificações dentro do mongodb
 ```bash
 # criando as schemas que são as models do mongo
-touch /home/bruno/GitHub/software-gobarber/src/app/schemas/Notification.js
+touch src/app/schemas/Notification.js
 ```
 e no controller AppointmentController.js geramos a notificação e para visualizar
 esse banco usamos o [MongoDB Compass Community](https://www.mongodb.com/download-center/compass)
@@ -325,7 +325,7 @@ esse banco usamos o [MongoDB Compass Community](https://www.mongodb.com/download
 ### Listando notificações do usuário
 criamos a rota no arquivo routes.js criando o arquivo NotificationController.js
 ```bash
-touch /home/bruno/GitHub/software-gobarber/src/app/controllers/NotificationController.js
+touch src/app/controllers/NotificationController.js
 ```
 ### Marcar notificações como lidas
 criamos a rota no arquivo routes.js e no controller NotificationController.js incluímos o método update.
@@ -339,11 +339,11 @@ enviando ao prestador um email com o aviso de cancelamento.
 ```bash
 yarn add nodemailer
 # crio o arquivo de configuração de envios de email.
-touch /home/bruno/GitHub/software-gobarber/src/config/mail.js
+touch src/config/mail.js
 ```
 utilizando [mailtrap](https://mailtrap.io/) (somente para ambiente de desenvolvimento!)
 ```bash
-touch /home/bruno/GitHub/software-gobarber/src/lib/Mail.js
+touch src/lib/Mail.js
 # na pasta lib é onde colocamos configurações adicionais, para ficar mais
 # isolado e o arquivo Mail.js é a configuração do email
 ```
@@ -375,12 +375,12 @@ também vamos instalar uma ferramenta de fila dentro do Node.js para background 
 ```bash
 yarn add bee-queue
 # criamos novos arquivos
-touch /home/bruno/GitHub/software-gobarber/src/lib/Queue.js
-touch /home/bruno/GitHub/software-gobarber/src/app/jobs/CancellationMail.js
-touch /home/bruno/GitHub/software-gobarber/src/config/redis.js
+touch src/lib/Queue.js
+touch src/app/jobs/CancellationMail.js
+touch src/config/redis.js
 # mudo forma da passagem do email no arquivo AppointController.js importando a
 # fila
-touch /home/bruno/GitHub/software-gobarber/src/queue.js
+touch src/queue.js
 # com esse arquivo esse processo não vai estar rodando no mesmo Node, pois, a
 # fila pode estar rodando em um servidor num core do processador, com mais ou
 # menos recursos, totalmente separado, assim a fila não atrapalha a performance
@@ -388,3 +388,11 @@ touch /home/bruno/GitHub/software-gobarber/src/queue.js
 ```
 ### Monitorando falhas na fila
 então configuro o arquivo Queue.js
+
+### Listando horários disponíveis
+crio uma rota em routes.js listando os horários disponíveis de um prestador em dado dia
+```bash
+# crio o respectivo controller
+touch src/app/controllers/AvailableController.js
+```
+### Campos virtuais no agendamento
