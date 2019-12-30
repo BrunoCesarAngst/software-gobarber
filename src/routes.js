@@ -17,7 +17,11 @@ import authMiddleware from './app/middlewares/auth';
 const routes = new Router();
 const upload = multer(multerConfig);
 
+// criar usuário
 routes.post('/users', UserController.store);
+// listar usuários
+routes.get('/users', UserController.index);
+// criar sessão
 routes.post('/sessions', SessionController.store);
 
 // definimos a middleware como global valendo para as rotas posteriores

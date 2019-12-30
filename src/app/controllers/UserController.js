@@ -46,6 +46,16 @@ class UserController {
     });
   }
 
+  async index(req, res) {
+    // aqui retorna todo tipo de usuário.
+    const users = await User.findAll({
+      // aqui filtro as informações de req.file
+      attributes: ['id', 'name', 'provider', 'email', 'avatar_id']
+    });
+
+    return res.json(users);
+  }
+
   // esse método é para usuários fazerem alteração de cadastro, portanto, será acessível somente para usuários que estejam logados
   async update(req, res) {
     /**
